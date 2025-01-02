@@ -23,6 +23,7 @@ export default () => {
     const users = await userService.findUsersById(req.params.id);
     res.json(users);
   });
+  
   //Create
   router.post("/users", async (req, res) => {
     const newUser: User = req.body;
