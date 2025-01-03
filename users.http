@@ -1,0 +1,27 @@
+### POST Request
+POST http://localhost:4000/api/v1/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "ADS",
+  "username": "ASD",
+  "email": "SDA@test.com"
+}
+
+### GET ALL 
+GET http://localhost:4000/api/v1/users HTTP/1.1
+### GET BY ID
+GET http://localhost:4000/api/v1/users/6776bed29a916183bddd391e HTTP/1.1
+
+
+### PUT REQUEST
+PUT http://localhost:4000/api/v1/users/6776beaf9a916183bddd391b HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Antonio"
+}
+
+
+### DELETE REQUEST
+DELETE http://localhost:4000/api/v1/users/6776bfe8cd8713e6ae8d157f HTTP/1.1
