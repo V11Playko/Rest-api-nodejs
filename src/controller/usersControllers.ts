@@ -2,8 +2,10 @@ import { UserRepository } from "@repository/UserRepository";
 import { UserService } from "@service/UserService";
 import { Request, Response } from "express";
 import { IUserRepository, IUserService, User } from "types/UsersTypes";
+
 const userRepository: IUserRepository = new UserRepository();
 const userService: IUserService = new UserService(userRepository);
+
 export const findUsers = async (req: Request, res: Response) => {
   try {
     const users = await userService.findUsers();
@@ -14,6 +16,7 @@ export const findUsers = async (req: Request, res: Response) => {
     res.status(500).json(error);
   }
 };
+
 export const findUsersById = async (req: Request, res: Response) => {
   try {
     const users = await userService.findUsersById(req.params.id);
@@ -22,5 +25,16 @@ export const findUsersById = async (req: Request, res: Response) => {
   } catch (error) {
     console.log("error :>> ", error);
     res.status(500).json(error);
+  }
+};
+
+export const createUser = async (req: Request, res: Response) => {
+  try {
+    const newUser: User = req.body;
+    const result = await userService.createUser(newUser);
+    res.status(201).json(result);
+  } catch (error) {
+    console.log("error :>> ", error);
+    res.status(400).json(error);
   }
 };
