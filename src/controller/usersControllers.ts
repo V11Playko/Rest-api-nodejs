@@ -38,3 +38,14 @@ export const createUser = async (req: Request, res: Response) => {
     res.status(400).json(error);
   }
 };
+
+export const updateUser = async (req: Request, res: Response) => {
+  try {
+    const users = await userService.updateUser(req.params.id, req.body);
+    if (!users) return res.status(404).json({ message: "Not user Found" });
+    res.json(users);
+  } catch (error) {
+    console.log("error :>> ", error);
+    res.status(500).json(error);
+  }
+};
