@@ -5,6 +5,7 @@ import { UserService } from '@service/UserService';
 import { UserRepository } from '@repository/UserRepository';
 import { RolesService } from '@service/RolesService';
 import { RolesRepository } from '@repository/rolesRepositories';
+import { createUser, deleteUser, findUsers, findUsersById, updateUser } from '@controller/usersControllers';
 
 const router = Router();
 
@@ -20,46 +21,25 @@ export default () => {
     })
 
  // User Routes
- router.get("/users", async (req, res) => {
-    const users = await userService.findUsers();
-    res.json(users);
-  });
-
-  router.get("/users/:id", async (req, res) => {
-    const users = await userService.findUsersById(req.params.id);
-    res.json(users);
-  });
+  router.get("/users", findUsers);
+  router.get("/users/:id", findUsersById);
   
-  //Create
-  router.post("/users", async (req, res) => {
-    const newUser: User = req.body;
-    const result = await userService.createUser(newUser);
+  router.post("/users", createUser);
 
-    res.json(result);
-  });
+  router.put("/users/:id", updateUser);
 
-  router.put("/users/:id", async (req, res) => {
-    const users = await userService.updateUser(req.params.id, req.body);
-    res.json(users);
-  });
-  router.delete("/users/:id", async (req, res) => {
-    const users = await userService.deleteUser(req.params.id);
-    res.json(users);
-  });
+  router.delete("/users/:id", deleteUser);
 
  // Roles Routes
- //Get
  router.get("/roles", async (req, res) => {
   const roles = await rolesService.findRoles();
   res.json(roles);
 });
-
 router.get("/roles/:id", async (req, res) => {
   const roles = await rolesService.findRolesById(req.params.id);
   res.json(roles);
 });
 
-//Create
 router.post("/roles", async (req, res) => {
   const newRole: Roles = req.body;
   const result = await rolesService.createRoles(newRole);
@@ -75,7 +55,6 @@ router.delete("/roles/:id", async (req, res) => {
   const roles = await rolesService.deleteRoles(req.params.id);
   res.json(roles);
 });
-
 
   return router;
 };
