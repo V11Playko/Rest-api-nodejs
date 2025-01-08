@@ -1,3 +1,4 @@
+import { Document } from "mongoose";
 import { Query, Repository } from "./RepositoryTypes";
 
 export interface User extends Document {
@@ -5,6 +6,7 @@ export interface User extends Document {
   username: string;
   email: string;
   password: string;
+  comparePassword(password: string): Promise<boolean>;
 }
 
 export interface IUserRepository extends Repository<User> {
@@ -14,8 +16,8 @@ export interface IUserRepository extends Repository<User> {
 export interface IUserService {
   createUser(user: User): Promise<User>;
   findUsers(): Promise<User[]>;
-  findUsersById(id: string): Promise<User | null>
-  findUsersByEmail(email: string): Promise<User | null>
-  updateUser(id: string, user: Partial<User>): Promise<User | null>
-  deleteUser(id: string): Promise<boolean>
+  findUsersById(id: string): Promise<User | null>;
+  findUsersByEmail(email: string): Promise<User | null>;
+  updateUser(id: string, user: Partial<User>): Promise<User | null>;
+  deleteUser(id: string): Promise<boolean>;
 }
