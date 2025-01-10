@@ -3,9 +3,10 @@ POST http://localhost:4000/api/v1/users HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "prueba 2",
-  "username": "prueba 2",
-  "email": "prueba2@test.com"
+  "name": "prueba",
+  "username": "prueba",
+  "email": "prueba@test.com",
+  "password": "prueba"
 }
 
 ### GET ALL 
