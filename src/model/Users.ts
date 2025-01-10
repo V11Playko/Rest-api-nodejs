@@ -41,7 +41,7 @@ UserSchema.pre<User>("save", async function (next) {
 
 UserSchema.method("comparePassword", async function (password: string): Promise<boolean> {
   return await bcrypt.compare(password, this.password as string);
-});
+}); 
 
 UserSchema.methods.toJSON = function () {
   const userObj = this.toObject();

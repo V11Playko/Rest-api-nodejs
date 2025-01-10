@@ -18,3 +18,17 @@ export const registerUser = async (req: Request, res: Response) => {
     res.status(500).json(error);
   }
 };
+
+export const loginUser = async (req: Request, res: Response) => {
+  try {
+    const { email, password }: User = req.body;
+    const user = await userService.findUsersByEmail(email);
+    if (!user) return res.status(400).json({ message: "Invalid user or password" });
+    const comparePass = await user.comparePassword(password);
+    if (!comparePass) return res.status(400).json({ message: "Invalid user or password" });
+    res.json(user);
+  } catch (error) {
+    console.log("error :>> ", error);
+    res.status(500).json(error);
+  }
+};

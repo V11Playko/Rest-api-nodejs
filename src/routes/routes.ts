@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { createUser, deleteUser, findUsers, findUsersById, updateUser } from '@controller/usersControllers';
 import { createRoles, deleteRoles, findRoles, findRolesById, updateRoles } from '@controller/rolesControllers';
-import { registerUser } from '@auth/authControllers';
+import { loginUser, registerUser } from '@auth/authControllers';
 
 const router = Router();
 
@@ -12,6 +12,7 @@ export default () => {
 
   // Auth Routes
   router.post("/auth/register", registerUser);
+  router.post("/auth/login", loginUser);
 
  // User Routes
   router.get("/users", findUsers);

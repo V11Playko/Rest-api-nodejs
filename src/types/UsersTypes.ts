@@ -6,7 +6,7 @@ export interface User extends Document {
   username: string;
   email: string;
   password: string;
-  comparePassword(password: string): Promise<boolean>;
+  comparePassword(password: string): Promise<boolean>; 
 }
 
 export interface IUserRepository extends Repository<User> {
