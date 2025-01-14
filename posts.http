@@ -1,10 +1,13 @@
 POST http://localhost:4000/api/v1/posts HTTP/1.1
 Content-Type: application/json
+
 {
   "title": "Post Prueba 2"
 }
+
 ###
 GET http://localhost:4000/api/v1/posts HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODA4MmY3M2NiYmY0ZWQyYTYyZDYyYyIsImVtYWlsIjoicHJ1ZWJhQHRlc3QuY29tIiwidXNlcm5hbWUiOiJwcnVlYmEiLCJpYXQiOjE3MzY4Njk1MTksImV4cCI6MTczNjg3MzExOX0.gjjgIay-uVUFrZH6iiqvrcFBDTSjLHDzHZu_y92f6-s
 ###
 GET http://localhost:4000/api/v1/posts/66fafc55bd8ec4ae3e12b81b HTTP/1.1
 ###
