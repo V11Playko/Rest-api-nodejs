@@ -17,31 +17,25 @@ export default () => {
   router.post("/auth/login", loginUser);
 
  // User Routes
-  router.get("/users", findUsers);
-  router.get("/users/:id", findUsersById);
-
-  router.post("/users", createUser);
-
-  router.put("/users/:id", updateUser);
-
-  router.delete("/users/:id", deleteUser);
+  router.get("/users", verifyToken, findUsers);
+  router.get("/users/:id", verifyToken, findUsersById);
+  router.post("/users", verifyToken, createUser);
+  router.put("/users/:id", verifyToken, updateUser);
+  router.delete("/users/:id", verifyToken, deleteUser);
 
  // Roles Routes
-  router.get("/roles", findRoles);
-  router.get("/roles/:id", findRolesById);
-
-  router.post("/roles", createRoles);
-
-  router.put("/roles/:id", updateRoles);
-
-  router.delete("/roles/:id", deleteRoles);
+  router.get("/roles", verifyToken, findRoles);
+  router.get("/roles/:id", verifyToken, findRolesById);
+  router.post("/roles", verifyToken, createRoles);
+  router.put("/roles/:id", verifyToken, updateRoles);
+  router.delete("/roles/:id", verifyToken, deleteRoles);
 
   // Posts Routes
-  router.get("/posts",verifyToken, findPosts);
+  router.get("/posts", verifyToken, findPosts);
   router.get("/posts/:id", findPostsById);
-  router.post("/posts", createPosts);
-  router.put("/posts/:id", updatePosts);
-  router
+  router.post("/posts", verifyToken, createPosts);
+  router.put("/posts/:id", verifyToken, updatePosts);
+  router.delete("/posts/:id", verifyToken, deletePosts)
 
   return router;
 };
