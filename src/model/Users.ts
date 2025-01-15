@@ -22,7 +22,17 @@ const UserSchema: Schema = new Schema<User>(
       type: String,
       required: true,
       trim: true
-    }
+    },
+    permissions: {
+      type: [String],
+      default: []
+    },
+    roles: [
+      {
+        ref: "Roles",
+        type: Schema.Types.ObjectId
+      }
+    ]
   },
   {
     timestamps: true,
@@ -41,7 +51,7 @@ UserSchema.pre<User>("save", async function (next) {
 
 UserSchema.method("comparePassword", async function (password: string): Promise<boolean> {
   return await bcrypt.compare(password, this.password as string);
-}); 
+});
 
 UserSchema.methods.toJSON = function () {
   const userObj = this.toObject();

@@ -5,7 +5,12 @@ const RolesSchema: Schema = new Schema<Roles>(
   {
     name: {
       type: String,
-      required: true
+      required: true,
+      unique: true
+    },
+    permissions: {
+      type: [String],
+      default: []
     }
   },
   {
@@ -13,4 +18,5 @@ const RolesSchema: Schema = new Schema<Roles>(
     versionKey: false
   }
 );
+
 export const RolesModel = mongoose.model<Roles>("Roles", RolesSchema);
