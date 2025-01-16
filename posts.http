@@ -1,8 +1,9 @@
 POST http://localhost:4000/api/v1/posts HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODkxYzI0OTgyNzQzMTYzOTBhMmU5ZSIsImVtYWlsIjoiZXhhbXBsZTZAdGVzdC5jb20iLCJ1c2VybmFtZSI6IjNuanIzb3REZXYwMDAiLCJpYXQiOjE3MzcwMzg4ODksImV4cCI6MTczNzA0MjQ4OX0._tFVnLJ5xjYn5au7ioehQe63jndl7SVb_1uHRs0zB98
 
 {
-  "title": "Post Prueba 2"
+  "title": "Post Prueba 6"
 }
 
 ###

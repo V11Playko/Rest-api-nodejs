@@ -1,42 +1,42 @@
-import { Router } from 'express'
-import { createUser, deleteUser, findUsers, findUsersById, updateUser } from '@controller/usersControllers';
-import { createRoles, deleteRoles, findRoles, findRolesById, updateRoles } from '@controller/rolesControllers';
+import { Router } from "express";
+import { createRoles, deleteRoles, findRoles, findRolesById, updateRoles } from "@controller/rolesControllers";
+import { createUser, deleteUser, findUsers, findUsersById, updateUser } from "@controller/usersControllers";
+import { loginUser, registerUser } from "@auth/authControllers";
 import { createPosts, deletePosts, findPosts, findPostsById, updatePosts } from "@controller/postsControllers";
-import { loginUser, registerUser } from '@auth/authControllers';
-import { verifyToken } from '@middlewares/auth';
-import { checkRoles } from '@middlewares/roles';
+import { getPermissons, verifyToken } from "middlewares/auth";
+import { checkRoles } from "middlewares/roles";
 
 const router = Router();
 
 export default () => {
-    router.get('/health', (req, res) => {
-        res.send("Api es Healthy!!");
-    })
+  router.get("/health", (req, res) => {
+    res.send("Api is Healthy!!!");
+  });
 
   // Auth Routes
   router.post("/auth/register", checkRoles, registerUser);
   router.post("/auth/login", loginUser);
 
- // User Routes
-  router.get("/users", verifyToken, findUsers);
-  router.get("/users/:id", verifyToken, findUsersById);
-  router.post("/users", verifyToken, createUser);
-  router.put("/users/:id", verifyToken, updateUser);
-  router.delete("/users/:id", verifyToken, deleteUser);
+  // Users Routes
+  router.get("/users", verifyToken, getPermissons, findUsers);
+  router.get("/users/:id", verifyToken, getPermissons, findUsersById);
+  router.post("/users", verifyToken, getPermissons, checkRoles, createUser);
+  router.put("/users/:id", verifyToken, getPermissons, updateUser);
+  router.delete("/users/:id", verifyToken, getPermissons, deleteUser);
 
- // Roles Routes
-  router.get("/roles", verifyToken, findRoles);
-  router.get("/roles/:id", verifyToken, findRolesById);
-  router.post("/roles", verifyToken, createRoles);
-  router.put("/roles/:id", verifyToken, updateRoles);
-  router.delete("/roles/:id", verifyToken, deleteRoles);
+  // Roles Routes
+  router.get("/roles", verifyToken, getPermissons, findRoles);
+  router.get("/roles/:id", verifyToken, getPermissons, findRolesById);
+  router.post("/roles", verifyToken, getPermissons, createRoles);
+  router.put("/roles/:id", verifyToken, getPermissons, updateRoles);
+  router.delete("/roles/:id", verifyToken, getPermissons, deleteRoles);
 
   // Posts Routes
-  router.get("/posts", verifyToken, findPosts);
+  router.get("/posts", findPosts);
   router.get("/posts/:id", findPostsById);
-  router.post("/posts", verifyToken, createPosts);
-  router.put("/posts/:id", verifyToken, updatePosts);
-  router.delete("/posts/:id", verifyToken, deletePosts)
+  router.post("/posts", verifyToken, getPermissons, createPosts);
+  router.put("/posts/:id", verifyToken, getPermissons, updatePosts);
+  router.delete("/posts/:id", verifyToken, getPermissons, deletePosts);
 
   return router;
 };
