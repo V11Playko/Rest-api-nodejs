@@ -22,4 +22,5 @@ export interface IUserService {
   findUsersById(id: string): Promise<User | null>;
   findUsersByEmail(email: string): Promise<User | null>;
   updateUser(id: string, user: Partial<User>): Promise<User | null>;
+  deleteUser(id: string): Promise<boolean>;
 }  
