@@ -4,6 +4,7 @@ import { createRoles, deleteRoles, findRoles, findRolesById, updateRoles } from 
 import { createPosts, deletePosts, findPosts, findPostsById, updatePosts } from "@controller/postsControllers";
 import { loginUser, registerUser } from '@auth/authControllers';
 import { verifyToken } from '@middlewares/auth';
+import { checkRoles } from '@middlewares/roles';
 
 const router = Router();
 
@@ -13,7 +14,7 @@ export default () => {
     })
 
   // Auth Routes
-  router.post("/auth/register", registerUser);
+  router.post("/auth/register", checkRoles, registerUser);
   router.post("/auth/login", loginUser);
 
  // User Routes

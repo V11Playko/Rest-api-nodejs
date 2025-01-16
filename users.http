@@ -1,12 +1,14 @@
 ### POST Request
 POST http://localhost:4000/api/v1/users HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODkwODcwMjY2YzM0MDNlMDNiYzkxOCIsImVtYWlsIjoiZXhhbXBsZTZAdGVzdC5jb20iLCJ1c2VybmFtZSI6IjNuanIzb3REZXYwMDAiLCJpYXQiOjE3MzcwMzM5MTAsImV4cCI6MTczNzAzNzUxMH0.3Ljg8pbAHiGEhkakB1UzX3azfMo8C-hVNSHO4mC6DXQ
 
 {
-  "name": "prueba",
-  "username": "prueba",
-  "email": "prueba@test.com",
-  "password": "prueba"
+  "name": "guest",
+  "username": "guest",
+  "email": "guest@test.com",
+  "password": "guest",
+  "roles": ["67881b07452d2a47d87debe4"]
 }
 
 ### GET ALL 
