@@ -41,10 +41,11 @@
   "_moduleAliases": {
     "@server": "dist/server",
     "@config": "dist/config",
-    "@controllers": "dist/controllers",
-    "@services": "dist/services",
-    "@repositories": "dist/repositories",
-    "@models": "dist/models",
+    "@controller": "dist/controller",
+    "@auth": "dist/auth",
+    "@service": "dist/service",
+    "@repository": "dist/repository",
+    "@model": "dist/model",
     "@routes": "dist/routes",
     "@middlewares": "dist/middlewares"
   }

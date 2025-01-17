@@ -1,6 +1,7 @@
-import app from "@server/server"
+import "module-alias/register";
+import app from "@server/server";
 import dotenv from "dotenv";
-import "@config/mongodb"
+import "@config/mongodb";
 
 dotenv.config();
 

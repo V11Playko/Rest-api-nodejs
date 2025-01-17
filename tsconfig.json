@@ -11,9 +11,9 @@
     "paths": {
       "@*": ["*"]
     },
-    "typeRoots": ["@types", "./node_modules/@types"] 
+    "typeRoots": ["@types", "./node_modules/@types"]
   },
-  "include": ["src", "@types/**/*.d.ts"],
+  "include": ["src"],
   "exclude": ["node_modules"],
   "ts-node": {
     "require": ["tsconfig-paths/register"]
